@@ -125,16 +125,20 @@ export default function BookingForm() {
                   <label htmlFor="guests" className="text-xs font-semibold uppercase tracking-wider text-gold-champagne/80 font-sans">
                     {t('labelGuests')}
                   </label>
-                  <input
-                    type="number"
+                  <select
                     id="guests"
-                    min="1"
-                    max="50"
                     required={activeTab === 'reservation'}
                     value={guests}
                     onChange={(e) => setGuests(e.target.value)}
-                    className="w-full bg-luxury-black/60 border border-white/10 rounded-sm py-3 px-4 text-sm text-luxury-gray focus:outline-none focus:border-gold-champagne focus:ring-1 focus:ring-gold-champagne/20 transition-all duration-300"
-                  />
+                    className="w-full bg-luxury-black/60 border border-white/10 rounded-sm py-3.5 px-4 text-sm text-luxury-gray focus:outline-none focus:border-gold-champagne focus:ring-1 focus:ring-gold-champagne/20 transition-all duration-300 cursor-pointer"
+                  >
+                    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
+                      <option key={num} value={num} className="bg-luxury-charcoal text-luxury-gray">
+                        {num} {num === 1 ? (language === 'en' ? 'Person' : 'Pessoa') : (language === 'en' ? 'People' : 'Pessoas')}
+                      </option>
+                    ))}
+                    <option value="10+" className="bg-luxury-charcoal text-luxury-gray">10+ ({language === 'en' ? 'Contact us' : 'Contactar'})</option>
+                  </select>
                 </div>
 
                 {/* Campo Data e Hora Customizado */}

@@ -186,10 +186,16 @@ export default function CustomDatePicker({ onChange, value }: CustomDatePickerPr
 
       {/* Popover do Calendário de Luxo */}
       {isOpen && (
-        <div 
-          onMouseDown={(e) => e.stopPropagation()}
-          className="absolute z-50 mt-1 top-full left-0 w-full sm:w-[580px] bg-luxury-charcoal border border-gold-champagne/20 rounded-md shadow-2xl p-4 sm:p-6 flex flex-col sm:flex-row gap-6 animate-fadeIn transition-all duration-300"
-        >
+        <>
+          {/* Overlay de fundo apenas no Mobile para fechar no clique fora */}
+          <div 
+            className="fixed inset-0 bg-black/70 backdrop-blur-xs z-40 sm:hidden animate-fadeIn"
+            onClick={() => setIsOpen(false)}
+          />
+          <div 
+            onMouseDown={(e) => e.stopPropagation()}
+            className="fixed inset-x-4 top-[10%] max-h-[80vh] overflow-y-auto sm:overflow-visible sm:max-h-none sm:absolute z-50 sm:mt-1 sm:top-full sm:left-0 sm:w-[580px] bg-luxury-charcoal border border-gold-champagne/20 rounded-md shadow-2xl p-4 sm:p-6 flex flex-col sm:flex-row gap-6 animate-fadeIn transition-all duration-300 scrollbar-thin"
+          >
           
           {/* Lado Esquerdo: Calendário */}
           <div className="flex-1">
@@ -299,7 +305,8 @@ export default function CustomDatePicker({ onChange, value }: CustomDatePickerPr
             </div>
           </div>
 
-        </div>
+          </div>
+        </>
       )}
     </div>
   );
