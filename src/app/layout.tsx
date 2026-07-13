@@ -23,8 +23,8 @@ export const metadata: Metadata = {
   authors: [{ name: "Al Reem Restaurant" }],
   viewport: "width=device-width, initial-scale=1",
   icons: {
-    icon: "/logo.png?v=3",
-    apple: "/logo.png?v=3",
+    icon: "/logo.png?v=4",
+    apple: "/logo.png?v=4",
   }
 };
 
